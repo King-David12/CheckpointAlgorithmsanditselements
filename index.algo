@@ -1,0 +1,39 @@
+ALGORITHM for sentence analysis.
+
+START
+
+// Declaration of variables
+VAR 
+    char_counter : integer := 0        // Counter for sentence length
+    word_counter : integer := 1        // Counter for words (starts at 1)
+    vowel_counter : integer := 0       // Counter for vowels
+    current_char : character,           // Current character being read
+    previous_char : character := ' '   // Previous character (initialized as space)
+
+// Main processing loop
+REPEAT
+    Read current_char
+    char_counter := char_counter + 1
+    
+    // Check if current character is a vowel
+     IF (char = 'a' OR char = 'e' OR char = 'i' OR char = 'o' OR char = 'u' OR
+          char = 'A' OR char = 'E' OR char = 'I' OR char = 'O' OR char = 'U') THEN
+        vowel_counter := vowel_counter + 1
+    END IF
+    
+    // Check if current character is a space and previous was not a space
+    // This indicates the start of a new word
+    IF (current_char = ' ') AND (previous_char ≠ ' ') THEN
+        word_counter := word_counter + 1
+    END IF
+    
+    previous_char := current_char
+    
+UNTIL current_char = '.'
+
+// Output results
+Print "Length of sentence: ", char_counter
+Print "Number of words: ", word_counter
+Print "Number of vowels: ", vowel_counter
+
+END
